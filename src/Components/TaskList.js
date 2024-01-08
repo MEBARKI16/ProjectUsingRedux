@@ -1,6 +1,14 @@
-const TaskList = () => {
+import { connect } from "react-redux";
+import { deleteTask } from "../Store/actions";
+const TaskList = ({ tasks, dispatch }) => {
     return (
-        <h1>no task displayed</h1>
+        <ul>
+            {tasks.map(task => <li onClick={() => dispatch(deleteTask(task.id))} key={task.id}>{task.content}</li>)}
+        </ul>
     );
 }
-export default TaskList;
+
+const getData = state => ({
+    tasks: state.tasks
+})
+export default connect(getData)(TaskList);

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 import { addTask } from "../Store/actions";
-const AddTask = () => {
+const AddTask = ({ dispatch }) => {
     const [taskInput, setTaskInput] = useState('');
     const HandleSubmit = e => {
         e.preventDefault();
